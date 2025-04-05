@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Links</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      padding: 10px 0;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .copy-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 5px;
+    }
+
+    .copy-button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #444;
+    }
+
+    th {
+      background-color: #333;
+      color: #ffffff;
+    }
+
+    td {
+      background-color: #222;
+    }
+
+    td a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    .notification {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      display: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Class Links</h1>
+  </header>
+
+  <main>
+    <h2>Email</h2>
+    <p>
+      <span id="email">rvit24bcs083.rvitm@rvei.edu.in</span>
+      <button class="copy-button" onclick="copyEmail()">Copy Email</button>
+    </p>
+
+    <div id="notification" class="notification">Email copied!</div>
+
+    <h2>Class Routine</h2>
+    <p>
+      <a href="https://drive.google.com/file/d/17OhwuIblW1kJqz85eDaso-8ZnrSRFhAQ/view?usp=sharing" target="_blank"
+        style="color: #4CAF50; text-decoration: none;">
+        Click here to view the class routine
+      </a>
+    </p>
+
+    <h2>Class Links</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Class Name</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Python</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/python-22plc15b-2sem?usp=sharing&pli=1&authuser=3" target="_blank">Click here</a></td>
+        </tr>
+        <tr>
+          <td><strong>Maths</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/bmats201/about-the-course/course-material" target="_blank">Click here</a></td>
+        </tr>
+        <tr>
+          <td><strong>CAED</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/engineering-graphics?pli=1&authuser=3" target="_blank">Click here</a></td>
+        </tr>
+        <tr>
+          <td><strong>Chemistry</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/bches102-202?pli=1&authuser=3" target="_blank">Click here</a></td>
+        </tr>
+        <tr>
+          <td><strong>Electrical</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/introduction-to-electrical-eng" target="_blank">Click here</a></td>
+        </tr>
+        <tr>
+          <td><strong>SFH</strong></td>
+          <td><a href="https://sites.google.com/rvei.edu.in/sfh-physics?pli=1&authuser=2" target="_blank">Click here</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    function copyEmail() {
+      var email = document.getElementById("email").innerText;
+      var textArea = document.createElement("textarea");
+      textArea.value = email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+
+      var notification = document.getElementById("notification");
+      notification.style.display = "block";
+      setTimeout(function () {
+        notification.style.display = "none";
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>
