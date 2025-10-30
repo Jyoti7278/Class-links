@@ -27,6 +27,46 @@
       margin: 0;
       padding: 0;
     }
+
+    /* ===== PASSWORD SCREEN ===== */
+    #password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 2000;
+    }
+    #password-screen input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      outline: none;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      margin-bottom: 10px;
+    }
+    #password-screen button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #password-error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -177,72 +217,101 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1><i class="fas fa-link"></i> Class Links</h1>
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <i id="theme-icon" class="fas fa-moon"></i>
-    </button>
-  </header>
-  <main>
-    <div class="link-row">
-      <div class="card">
-        <div class="email-card">
-          <div class="email-content">
-            <h3><i class="fas fa-envelope"></i> Email</h3>
-            <p id="email">rvit24bcs190.rvitm@rvei.edu.in</p>
+
+  <!-- PASSWORD SCREEN -->
+  <div id="password-screen">
+    <h2><i class="fas fa-lock"></i> Enter Password</h2>
+    <input type="password" id="password-input" placeholder="Enter password...">
+    <button onclick="checkPassword()">Unlock</button>
+    <p id="password-error">Incorrect password. Try again.</p>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content" style="display:none;">
+    <header>
+      <h1><i class="fas fa-link"></i> Class Links</h1>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-moon"></i>
+      </button>
+    </header>
+    <main>
+      <div class="link-row">
+        <div class="card">
+          <div class="email-card">
+            <div class="email-content">
+              <h3><i class="fas fa-envelope"></i> Email</h3>
+              <p id="email">rvit24bcs190.rvitm@rvei.edu.in</p>
+            </div>
+            <button class="copy-button" onclick="copyEmail()">
+              <i class="fas fa-copy"></i> Copy
+            </button>
+            <div id="notification" class="notification">Email copied to clipboard!</div>
           </div>
-          <button class="copy-button" onclick="copyEmail()">
-            <i class="fas fa-copy"></i> Copy
-          </button>
-          <div id="notification" class="notification">Email copied to clipboard!</div>
+        </div>
+        <div class="card routine-btn" onclick="window.open('https://raw.githubusercontent.com/Jyoti7278/Class-links/main/Time%20Table_page-0001.jpg', '_blank');">
+          <h3><i class="fas fa-calendar-alt"></i> Class Routine</h3>
+        </div>
+        <div class="card coe-btn" onclick="window.open('https://www.amazon.com/photos/shared/UwHv_7cZQFKzszLK3MGk5A.Tc71VtQXA-jgn-q3fbKium/gallery/ATOshlckSd6ZRq1YnwZkqg', '_blank');">
+          <h3><i class="fas fa-calendar-check"></i> Calendar of Events</h3>
         </div>
       </div>
-      <div class="card routine-btn" onclick="window.open('https://raw.githubusercontent.com/Jyoti7278/Class-links/main/Time%20Table_page-0001.jpg', '_blank');">
-        <h3><i class="fas fa-calendar-alt"></i> Class Routine</h3>
-      </div>
-      <div class="card coe-btn" onclick="window.open('https://www.amazon.com/photos/shared/UwHv_7cZQFKzszLK3MGk5A.Tc71VtQXA-jgn-q3fbKium/gallery/ATOshlckSd6ZRq1YnwZkqg', '_blank');">
-        <h3><i class="fas fa-calendar-check"></i> Calendar of Events</h3>
-      </div>
-    </div>
-    <h2>Class Links</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Class Name</th>
-          <th>Link</th>
-          <th>Credits</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong><i class="fas fa-square-root-alt"></i> Math</strong></td>
-          <td><a href="https://sites.google.com/rvei.edu.in/bcs301?usp=sharing" target="_blank">Click here</a></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong><i class="fas fa-cube"></i> OOPS with Java (OOPS)</strong></td>
-          <td><a href="https://sites.google.com/rvei.edu.in/3rd-cse-object-oriented-progra/home" target="_blank">Click here</a></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong><i class="fas fa-desktop"></i> Operating System (OS)</strong></td>
-          <td><a href="https://sites.google.com/rvei.edu.in/3rdsemcsebcs303-operatingsyste?pli=1&authuser=2" target="_blank">Click here</a></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong><i class="fas fa-database"></i> Data Structures and Applications (DSA)</strong></td>
-          <td><a href="https://sites.google.com/rvei.edu.in/cse-dsa-22-scheme-bcs304?pli=1&authuser=3" target="_blank">Click here</a></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong><i class="fas fa-microchip"></i> Digital Design and Computer Organisation (DDCO)</strong></td>
-          <td><a href="https://sites.google.com/rvei.edu.in/3rd-semester-ddco?pli=1&authuser=3" target="_blank">Click here</a></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+      <h2>Class Links</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Class Name</th>
+            <th>Link</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><i class="fas fa-square-root-alt"></i> Math</strong></td>
+            <td><a href="https://sites.google.com/rvei.edu.in/bcs301?usp=sharing" target="_blank">Click here</a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong><i class="fas fa-cube"></i> OOPS with Java (OOPS)</strong></td>
+            <td><a href="https://sites.google.com/rvei.edu.in/3rd-cse-object-oriented-progra/home" target="_blank">Click here</a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong><i class="fas fa-desktop"></i> Operating System (OS)</strong></td>
+            <td><a href="https://sites.google.com/rvei.edu.in/3rdsemcsebcs303-operatingsyste?pli=1&authuser=2" target="_blank">Click here</a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong><i class="fas fa-database"></i> Data Structures and Applications (DSA)</strong></td>
+            <td><a href="https://sites.google.com/rvei.edu.in/cse-dsa-22-scheme-bcs304?pli=1&authuser=3" target="_blank">Click here</a></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong><i class="fas fa-microchip"></i> Digital Design and Computer Organisation (DDCO)</strong></td>
+            <td><a href="https://sites.google.com/rvei.edu.in/3rd-semester-ddco?pli=1&authuser=3" target="_blank">Click here</a></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
   <script>
+    // ==== PASSWORD SYSTEM ====
+    const correctPassword = "dibbya6251";
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const errorMsg = document.getElementById("password-error");
+
+      if (input === correctPassword) {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      } else {
+        errorMsg.style.display = "block";
+        setTimeout(() => errorMsg.style.display = "none", 2000);
+      }
+    }
+
     function copyEmail() {
       const emailText = document.getElementById("email").innerText;
       navigator.clipboard.writeText(emailText).then(() => {
@@ -253,6 +322,7 @@
         }, 2000);
       });
     }
+
     function toggleTheme() {
       const html = document.documentElement;
       const icon = document.getElementById("theme-icon");
